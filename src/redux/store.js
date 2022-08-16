@@ -13,7 +13,7 @@ export const store = configureStore({
     router: routerReducer,
   }),
   middleware: [routerMiddleware],
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: import.meta.env.DEV,
   preloadedState,
 });
 
