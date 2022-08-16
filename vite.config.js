@@ -6,6 +6,18 @@ export default defineConfig({
   server: {
     port: 8080,
   },
+  build: {
+    sourcemap: false,
+    minify: 'terser',
+    terserOptions: {
+      format: {
+        beautify: true,
+      },
+      compress: {
+        passes: 3,
+      },
+    },
+  },
   plugins: [
     react(),
     legacy({

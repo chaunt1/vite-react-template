@@ -16,22 +16,9 @@
   "rules": {
     //here we can change any rule "off/error/warn"
     "prettier/prettier": "error", // or warn
-    "no-unused-vars": "warn" // default in airbnb is error
+    "no-unused-vars": "warn", // default in airbnb is error
+    "react/react-in-jsx-scope": "off"
   },
-  "overrides": [
-    {
-      "files": ["*.test.js"],
-      "env": { "jest": true }
-    },
-    {
-      "files": [".eslintrc.cjs", "app/vite.config.ts", "babel.config.cjs", "rollup.config.mjs", "scripts/**/*.js"],
-      "env": { "node": true }
-    },
-    {
-      "files": ["*.cjs"],
-      "parserOptions": { "sourceType": "script" }
-    }
-  ],
   "ignorePatterns": ["/.cache", "/.git", "/.husky"],
   "settings": {
     "import/core-modules": ["__STATIC_CONTENT_MANIFEST"],

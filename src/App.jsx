@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Provider } from 'react-redux';
 import { HistoryRouter as Router } from 'redux-first-history/rr6';
 import { store, history } from './redux/store';
-import logo from './asset/logo.svg';
+import logo from './assets/logo.svg';
 import './App.scss';
 
 function Demo() {
@@ -13,7 +13,7 @@ function Demo() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
         <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
+          <button type="button" onClick={() => setCount((c) => c + 1)}>
             count is: {count}
           </button>
         </p>
