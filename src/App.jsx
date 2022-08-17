@@ -1,47 +1,49 @@
-import { useState } from 'react';
 import { Provider } from 'react-redux';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import { HistoryRouter as Router } from 'redux-first-history/rr6';
-import { store, history } from './redux/store';
-import logo from './assets/logo.svg';
 import './App.scss';
-
-function Demo() {
-  const [count, setCount] = useState(0);
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((c) => c + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-            Learn React
-          </a>
-          {' | '}
-          <a className="App-link" href="https://vitejs.dev/guide/features.html" target="_blank" rel="noopener noreferrer">
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  );
-}
+import { history, store } from './redux/store';
 
 function App() {
   return (
     <Provider store={store}>
       <Router history={history}>
-        <Demo />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
       </Router>
     </Provider>
   );
 }
 
 export default App;
+
+function Home() {
+  return (
+    <>
+      <main>
+        <h2>Welcome to the homepage!</h2>
+        <p>You can do this, I believe in you.</p>
+      </main>
+      <nav>
+        <Link to="/about">About</Link>
+      </nav>
+    </>
+  );
+}
+
+function About() {
+  return (
+    <>
+      <main>
+        <h2>Who are we?</h2>
+        <p>That feels like an existential question, dont you think?</p>
+      </main>
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
+    </>
+  );
+}
