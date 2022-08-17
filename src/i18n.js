@@ -28,7 +28,7 @@ i18n
     },
     ns: ['translation'],
     backend: {
-      loadPath: '@locales/{{lng}}/{{ns}}.json',
+      loadPath: 'src/locales/{{lng}}/{{ns}}.json',
     },
   });
 

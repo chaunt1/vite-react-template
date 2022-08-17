@@ -1,8 +1,9 @@
 import { Provider } from 'react-redux';
 import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import { HistoryRouter as Router } from 'redux-first-history/rr6';
-import './App.scss';
-import { history, store } from './redux/store';
+import '@styles/App.scss';
+import { history, store } from '@redux/store';
+import { useTranslation } from 'react-i18next';
 
 function App() {
   return (
@@ -21,11 +22,12 @@ function App() {
 export default App;
 
 function Home() {
+  const { t } = useTranslation();
+
   return (
     <>
       <main>
-        <h2>Welcome to the homepage!</h2>
-        <p>You can do this, I believe in you.</p>
+        <h2>{t('title')}</h2>
       </main>
       <nav>
         <Link to="/about">About</Link>
