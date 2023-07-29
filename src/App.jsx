@@ -1,20 +1,23 @@
 import { Provider } from 'react-redux';
 import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import { HistoryRouter as Router } from 'redux-first-history/rr6';
-import '@styles/App.scss';
 import { history, store } from '@redux/store';
 import { useTranslation } from 'react-i18next';
+
+import '@styles/App.scss';
 
 function App() {
   return (
     <Provider store={store}>
-      <Router history={history}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </Router>
+      <PersistGate loading={null} persistor={persistor}>
+        <Router history={history}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </Router>
+      </PersistGate>
     </Provider>
   );
 }

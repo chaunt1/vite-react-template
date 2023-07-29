@@ -1,20 +1,31 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { autoBatchEnhancer, combineReducers, configureStore } from '@reduxjs/toolkit';
 import { createReduxHistoryContext } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
+import { persistStore } from 'redux-persist';
 
 const preloadedState = {};
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
   history: createBrowserHistory(),
+  routerReducerKey: 'router',
+  reduxTravelling: true,
 });
 
 export const store = configureStore({
   reducer: combineReducers({
     router: routerReducer,
   }),
-  middleware: [routerMiddleware],
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }).concat(routerMiddleware),
   devTools: import.meta.env.DEV,
   preloadedState,
+  enhancers: (existingEnhancers) => {
+    // Add the autobatch enhancer to the store setup
+    return existingEnhancers.concat(autoBatchEnhancer());
+  },
 });
 
 export const history = createReduxHistory(store);
+export const persistor = persistStore(store);
