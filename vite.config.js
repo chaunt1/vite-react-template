@@ -89,7 +89,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       strategies: 'injectManifest',
       srcDir: 'src',
-      filename: 'sw.ts',
+      filename: 'sw.js',
       outDir: 'dist',
       devOptions: {
         enabled: false,
