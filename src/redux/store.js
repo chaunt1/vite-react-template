@@ -1,7 +1,6 @@
 import { autoBatchEnhancer, combineReducers, configureStore } from '@reduxjs/toolkit';
 import { createReduxHistoryContext } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
-import { persistStore } from 'redux-persist';
 
 const preloadedState = {};
 
@@ -28,4 +27,3 @@ export const store = configureStore({
 });
 
 export const history = createReduxHistory(store);
-export const persistor = persistStore(store);

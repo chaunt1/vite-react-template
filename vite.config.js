@@ -89,7 +89,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       strategies: 'injectManifest',
       srcDir: 'src',
-      filename: 'sw.js',
+      filename: 'sw.ts',
       outDir: 'dist',
       devOptions: {
         enabled: false,
@@ -99,18 +99,14 @@ export default defineConfig({
         swDest: 'dist/sw.js',
       },
       manifest: {
-        name: 'ABS Invest',
-        short_name: 'ABS',
+        name: 'chaunt_vite_template',
+        short_name: 'chaunt_vite_template',
         prefer_related_applications: true,
 
         related_applications: [
           {
             platform: 'play',
             url: 'https://play.google.com/store/apps/details?id=vn.abs.app',
-          },
-          {
-            platform: 'itunes',
-            url: 'https://apps.apple.com/vn/app/abs-invest/id1633376332',
           },
         ],
       },

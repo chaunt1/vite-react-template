@@ -9,15 +9,13 @@ import '@styles/App.scss';
 function App() {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <Router history={history}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </Router>
-      </PersistGate>
+      <Router history={history}>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='*' element={<Navigate to='/' />} />
+        </Routes>
+      </Router>
     </Provider>
   );
 }
@@ -33,7 +31,7 @@ function Home() {
         <h2>{t('title')}</h2>
       </main>
       <nav>
-        <Link to="/about">About</Link>
+        <Link to='/about'>About</Link>
       </nav>
     </>
   );
@@ -47,7 +45,7 @@ function About() {
         <p>That feels like an existential question, dont you think?</p>
       </main>
       <nav>
-        <Link to="/">Home</Link>
+        <Link to='/'>Home</Link>
       </nav>
     </>
   );
