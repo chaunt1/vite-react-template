@@ -1,22 +1,26 @@
-import { Provider } from 'react-redux';
-import { Link, Navigate, Route, Routes } from 'react-router-dom';
-import { HistoryRouter as Router } from 'redux-first-history/rr6';
-import { history, store } from '@redux/store';
 import { useTranslation } from 'react-i18next';
+import { createBrowserRouter, Link, Navigate, RouterProvider } from 'react-router-dom';
 
 import '@styles/App.scss';
 
+const router = createBrowserRouter([
+  {
+    path: '',
+    element: <Home />,
+  },
+  {
+    path: 'about',
+    element: <About />,
+  },
+  {
+    path: '*',
+    element: <Navigate to='/' />,
+  },
+]);
+
 function App() {
   return (
-    <Provider store={store}>
-      <Router history={history}>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='*' element={<Navigate to='/' />} />
-        </Routes>
-      </Router>
-    </Provider>
+    <RouterProvider router={router} />
   );
 }
 

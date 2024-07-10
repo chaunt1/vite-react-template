@@ -3,6 +3,8 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 
+// init i18next
+// for all options read: https://www.i18next.com/overview/configuration-options
 i18n
   // i18next-http-backend
   // loads translations from your server
@@ -13,12 +15,10 @@ i18n
   .use(LanguageDetector)
   // pass the i18n instance to react-i18next.
   .use(initReactI18next)
-  // init i18next
-  // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     debug: import.meta.env.DEV,
     react: {
-      useSuspense: false,
+      useSuspense: true,
     },
     lng: 'vi',
     fallbackLng: 'vi',
@@ -26,9 +26,10 @@ i18n
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
+    defaultNS: 'translation',
     ns: ['translation'],
     backend: {
-      loadPath: 'src/locales/{{lng}}/{{ns}}.json',
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
   });
 
