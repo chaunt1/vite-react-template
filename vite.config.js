@@ -42,7 +42,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ['react', 'react-dom', 'react-i18next', 'react-resize-detector', 'react-router-dom'],
+          react: ['react', 'react-dom', 'react-i18next', 'react-resize-detector', 'react-router'],
           vendor: ['axios', 'i18next', 'i18next-browser-languagedetector', 'i18next-http-backend', 'js-cookie', 'lodash'],
           // else: use index.[id].js
         },

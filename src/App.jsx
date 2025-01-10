@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { createBrowserRouter, Link, Navigate, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Link, Navigate, RouterProvider } from 'react-router';
 
 import '@styles/App.scss';
 
@@ -19,9 +19,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return (
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
